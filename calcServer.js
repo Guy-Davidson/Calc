@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+const calcRoute = express.Router();
 
 let value = 0
 
@@ -10,23 +11,25 @@ app.use((_, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', '*');
   res.setHeader('Access-Control-Allow-Headers', '*');
   next();
-});
+})
 
 app.get('/value', (req, res) => res.send(value.toString()))
 
-app.post('/plus', (req, res) => {    
+app.use('/calc', calcRoute)
+
+calcRoute.post('/plus', (req, res) => {    
     let digit = parseInt(req.query.digit)
     value += digit
     res.send(value.toString())
 })
 
-app.post('/minus', (req, res) => {    
+calcRoute.post('/minus', (req, res) => {    
   let digit = parseInt(req.query.digit)
   value -= digit
   res.send(value.toString())
 })
 
-app.post('/multiply', (req, res) => {    
+calcRoute.post('/multiply', (req, res) => {    
   let digit = parseInt(req.query.digit)
   value *= digit
   res.send(value.toString())

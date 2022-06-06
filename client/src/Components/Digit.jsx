@@ -9,10 +9,9 @@ const Digit = (props) => {
             digit={digit} 
             isDisabled={typeof activeOp !== 'string'}
             onClick={async () => {                
-                if(typeof activeOp === 'string') {
-                    console.log("Hey");
+                if(typeof activeOp === 'string') {                    
                     await axios
-                        .post(`http://localhost:5000/${activeOp}?digit=${digit}`)
+                        .post(`http://localhost:5000/calc/${activeOp}?digit=${digit}`)
                         .then(res => setValue(res.data))
                         .catch(e => console.log(e))   
                 }
