@@ -1,12 +1,29 @@
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 import Operator from './Operator'
 import Digit from './Digit'
 
+
 const Calc = () => {
+    const [value, setValue] = useState(null)
+    const [activeOp, setActiveOp] = useState(null)
+
+    useEffect(() => {
+        initValue()
+    }, [])
+
+    const initValue = async () => {             
+        await axios
+            .get('http://localhost:5000/value')
+            .then(res => setValue(res.data))
+            .catch(e => console.log(e))
+    }
+
     return (
         <StyledCalc>
             <ValueBox>
-                0
+                {value}
             </ValueBox>
             <OperatorsWrapper>
                 {operators.map((op, i) => {
@@ -14,6 +31,8 @@ const Calc = () => {
                         <Operator 
                             key={`Operator-${i}`}
                             operator={op}
+                            activeOp={activeOp}
+                            setActiveOp={setActiveOp}
                         />
                     )
                 })}
@@ -24,6 +43,8 @@ const Calc = () => {
                         <Digit 
                             key={`Digit-${i}`}
                             digit={digit}
+                            activeOp={activeOp}
+                            setValue={setValue}
                         />
                     )
                 })}
