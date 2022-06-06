@@ -24,7 +24,7 @@ const Digit = (props) => {
 
 const StyledDigit = styled.div`
     width: 100%;
-    height: 4rem;
+    height: 100%;
     background-color: #222;    
     display: flex;
     justify-content: center;

@@ -1,15 +1,12 @@
 import styled from 'styled-components'
 import GlobalStyles from '../Styles/Global.Styled'
-import imageSrc from '../Images/AppDevBGImage.jpg'
-
 import Calc from './Calc'
 
-const App = () => {
-    
+const App = () => {    
     return (
         <>
             <GlobalStyles />
-            <StyledApp style={{ backgroundImage: `url(${imageSrc})`}}>                            
+            <StyledApp>                            
                 <Calc />
             </StyledApp> 
         </>
@@ -23,8 +20,8 @@ const StyledApp = styled.div`
     align-items: center;
     background-repeat: no-repeat;
     background-size: auto;
-    object-fit: cover;
-    background-color: black;
+    object-fit: cover;    
+    background-image: linear-gradient(to right, #aaa ,#444);
 `
 
 export default App

@@ -88,6 +88,26 @@ const DigitsWrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
+    height: 100%;
+    overflow: auto;
+    ::-webkit-scrollbar {            
+                width: 5px;                
+                height: 7px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+        }
+
+        ::-webkit-scrollbar-track {
+                background-color: transparent;                
+                border-radius: 10px;                
+        }
+
+        ::-webkit-scrollbar-thumb {                
+                background-color: black;
+                border-radius: 10px;
+        }
 `
 
 const operators = [
